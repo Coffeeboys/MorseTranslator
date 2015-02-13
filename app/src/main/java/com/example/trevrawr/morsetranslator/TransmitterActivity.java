@@ -1,29 +1,67 @@
 package com.example.trevrawr.morsetranslator;
 
+import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.hardware.Camera;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+
 import java.lang.System;
+import java.util.ArrayList;
 
-
+import EncoderDecoder.EncoderDecoder;
+import EncoderDecoder.MorsePacket;
 
 
 public class TransmitterActivity extends ActionBarActivity {
-
     Camera cam;
     Camera.Parameters camParameters;
+    EncoderDecoder encoderDecoder = new EncoderDecoder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transmitter);
         createCamera();
-        while (true){
-            cameraOnForSeconds(1000);
-            waitForSeconds(1000);
+        final EditText editText = (EditText)findViewById(R.id.editTextTransmitter);
+        //open keyboard upon clicking on edittext
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+        Button button = (Button)findViewById(R.id.buttonTransmit);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String input = editText.getText().toString();
+                transmit(input);
+            }
+        });
+    }
+
+    public void transmit(String input){
+        ArrayList<ArrayList<MorsePacket>> data = encoderDecoder.encode(input);
+        for (int i = 0; i < data.size(); i++){
+            ArrayList<MorsePacket> currCharacter = data.get(i);
+            for (int j = 0; j < currCharacter.size(); j++){
+                MorsePacket packet = currCharacter.get(j);
+                Integer duration = packet.getDuration();
+                Long convertedDuration = duration.longValue();
+                boolean isDash = packet.getState();
+                if (isDash){
+                    cameraOnForSeconds(convertedDuration);
+                }
+                else{
+                    waitForSeconds(convertedDuration);
+                }
+
+            }
         }
 
     }
@@ -85,5 +123,11 @@ public class TransmitterActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+         closeCamera();
+        //Log.d("Destroy", "camera destroyed");
     }
 }

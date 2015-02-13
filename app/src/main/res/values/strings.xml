@@ -8,5 +8,7 @@
     <string name = "morse_transmitter_button_title">Morse Transmitter</string>
     <string name="title_activity_reader">ReaderActivity</string>
     <string name="morse_reader_button_title">Morse Reader</string>
+    <string name="transmitter_prompt">Enter the text you would like to translate to morse code:</string>
+    <string name="transmitter_button_name">Transmit!</string>
 
 </resources>
