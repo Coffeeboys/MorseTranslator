@@ -1,6 +1,8 @@
+package EncoderDecoder;
+
 // Object for morse packets
 public class MorsePacket {
-	private final int TIME_UNIT=10;
+	private final int TIME_UNIT=1000;
 	private int duration;
 	private boolean state;
 	
