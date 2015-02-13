@@ -22,7 +22,8 @@
         </activity>
         <activity
             android:name=".TransmitterActivity"
-            android:label="@string/title_activity_transmitter" >
+            android:label="@string/title_activity_transmitter"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".ReaderActivity"
