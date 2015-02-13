@@ -1,5 +1,6 @@
-import java.util.*;
+package EncoderDecoder;
 
+import java.util.*;
 public class EncoderDecoder {
 	private final MorsePacket dot = new MorsePacket(true, 1);
 	private final MorsePacket dash = new MorsePacket(true, 3);

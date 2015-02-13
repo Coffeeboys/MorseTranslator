@@ -1,5 +1,6 @@
 package com.example.trevrawr.morsetranslator;
 
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,11 +9,10 @@ import android.view.MenuItem;
 import android.hardware.Camera;
 import java.lang.System;
 
-
+import EncoderDecoder.MorsePacket;
 
 
 public class TransmitterActivity extends ActionBarActivity {
-
     Camera cam;
     Camera.Parameters camParameters;
 
