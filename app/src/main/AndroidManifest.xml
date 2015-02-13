@@ -24,6 +24,10 @@
             android:name=".TransmitterActivity"
             android:label="@string/title_activity_transmitter" >
         </activity>
+        <activity
+            android:name=".ReaderActivity"
+            android:label="@string/title_activity_reader" >
+        </activity>
     </application>
 
 </manifest>
