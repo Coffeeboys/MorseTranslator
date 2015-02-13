@@ -1,4 +1,4 @@
-
+// Object for morse packets
 public class MorsePacket {
 	private final int TIME_UNIT=10;
 	private int duration;
