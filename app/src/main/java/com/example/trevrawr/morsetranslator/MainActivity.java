@@ -23,6 +23,15 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        Button readerButton = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ReaderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

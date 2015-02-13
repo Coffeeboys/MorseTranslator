@@ -29,7 +29,7 @@ public class ReaderActivity extends ActionBarActivity {
             Toast t = new Toast(this);
             t.setText("Camera exists");
             t.show();
-        };
+        }
     }
 
     private boolean checkCameraHardware(Context context) {
