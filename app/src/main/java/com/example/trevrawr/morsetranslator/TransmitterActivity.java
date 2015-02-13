@@ -1,12 +1,19 @@
 package com.example.trevrawr.morsetranslator;
 
+import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.hardware.Camera;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+
 import java.lang.System;
 import java.util.ArrayList;
 
@@ -24,12 +31,18 @@ public class TransmitterActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transmitter);
         createCamera();
-//        while (true){
-//            cameraOnForSeconds(1000);
-//            waitForSeconds(1000);
-//        }
-        transmit("sos");
-
+        final EditText editText = (EditText)findViewById(R.id.editTextTransmitter);
+        //open keyboard upon clicking on edittext
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+        Button button = (Button)findViewById(R.id.buttonTransmit);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String input = editText.getText().toString();
+                transmit(input);
+            }
+        });
     }
 
     public void transmit(String input){
@@ -110,5 +123,11 @@ public class TransmitterActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+         closeCamera();
+        //Log.d("Destroy", "camera destroyed");
     }
 }
