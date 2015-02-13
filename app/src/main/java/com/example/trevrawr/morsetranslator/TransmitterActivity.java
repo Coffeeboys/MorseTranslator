@@ -2,6 +2,7 @@ package com.example.trevrawr.morsetranslator;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.hardware.Camera;
@@ -20,14 +21,25 @@ public class TransmitterActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transmitter);
         createCamera();
-        cameraOn();
+        while (true){
+            cameraOnForSeconds(1000);
+            waitForSeconds(1000);
+        }
+
     }
 
-    public void waitForSeconds(float seconds){
-        float startTime = System.currentTimeMillis();
+    public void waitForSeconds(long seconds){
+        Long startTime = System.currentTimeMillis();
+        Log.d("time", startTime.toString());
         while (System.currentTimeMillis() < startTime + seconds){
 
         }
+    }
+
+    public void cameraOnForSeconds(long seconds){
+        cameraOn();
+        waitForSeconds(seconds);
+        cameraOff();
     }
 
     public void createCamera(){
