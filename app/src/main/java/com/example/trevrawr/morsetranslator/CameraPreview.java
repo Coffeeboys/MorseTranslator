@@ -37,6 +37,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     public void surfaceCreated(SurfaceHolder holder) {
         try {
             mCamera.setPreviewDisplay(holder);
+            mCamera.setDisplayOrientation(90);
             mCamera.startPreview();
         }
         catch (IOException e) {
@@ -46,7 +47,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     public void surfaceDestroyed(SurfaceHolder holder) {
         mCamera.stopPreview();
+    }
 
+    public void destroyPreview() {
+        surfaceDestroyed(mHolder);
     }
 //    TODO: MIGHT NEED TO IMPLEMENT THIS
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {

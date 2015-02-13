@@ -1,5 +1,6 @@
 package com.example.trevrawr.morsetranslator;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -13,11 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.List;
 
 
-public class ReaderActivity extends ActionBarActivity {
+public class ReaderActivity extends Activity {
     public Camera mCamera;
     public CameraPreview mPreview;
     private List<Camera.Size> mSupportedPreviewSizes;
@@ -26,6 +28,7 @@ public class ReaderActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
+
 
         if (checkCameraHardware(this)) {
             openCamera();
@@ -39,10 +42,23 @@ public class ReaderActivity extends ActionBarActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCamera.release();
+                onPause();
                 finish();
             }
         });
+    }
+
+    public void onPause() {
+        super.onPause();
+
+        //mPreview.destroyPreview();
+        if (mCamera != null) {
+            mCamera.setPreviewCallback(null);
+            mPreview.getHolder().removeCallback(mPreview);
+            mCamera.release();
+            mCamera = null;
+        }
+
     }
 
     private boolean checkCameraHardware(Context context) {
