@@ -2,7 +2,7 @@ package EncoderDecoder;
 
 // Object for morse packets
 public class MorsePacket {
-	private final int TIME_UNIT=1000;
+	public final int TIME_UNIT=500;
 	private int duration;
 	private boolean state;
 	
