@@ -8,22 +8,47 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.hardware.Camera;
 import java.lang.System;
+import java.util.ArrayList;
 
+import EncoderDecoder.EncoderDecoder;
 import EncoderDecoder.MorsePacket;
 
 
 public class TransmitterActivity extends ActionBarActivity {
     Camera cam;
     Camera.Parameters camParameters;
+    EncoderDecoder encoderDecoder = new EncoderDecoder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transmitter);
         createCamera();
-        while (true){
-            cameraOnForSeconds(1000);
-            waitForSeconds(1000);
+//        while (true){
+//            cameraOnForSeconds(1000);
+//            waitForSeconds(1000);
+//        }
+        transmit("sos");
+
+    }
+
+    public void transmit(String input){
+        ArrayList<ArrayList<MorsePacket>> data = encoderDecoder.encode(input);
+        for (int i = 0; i < data.size(); i++){
+            ArrayList<MorsePacket> currCharacter = data.get(i);
+            for (int j = 0; j < currCharacter.size(); j++){
+                MorsePacket packet = currCharacter.get(j);
+                Integer duration = packet.getDuration();
+                Long convertedDuration = duration.longValue();
+                boolean isDash = packet.getState();
+                if (isDash){
+                    cameraOnForSeconds(convertedDuration);
+                }
+                else{
+                    waitForSeconds(convertedDuration);
+                }
+
+            }
         }
 
     }
