@@ -26,7 +26,8 @@
         </activity>
         <activity
             android:name=".ReaderActivity"
-            android:label="@string/title_activity_reader" >
+            android:label="@string/title_activity_reader"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

@@ -24,7 +24,7 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        Button readerButton = (Button) findViewById(R.id.button);
+        Button readerButton = (Button) findViewById(R.id.readerButton);
         readerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

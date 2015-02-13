@@ -18,20 +18,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     private Camera mCamera;
     private SurfaceHolder mHolder;
 
 
-    public CameraPreview
-    Preview(Context context) {
+    public CameraPreview(Context context, Camera camera) {
         super(context);
 
-        mSurfaceView = new SurfaceView(context);
-        addView(mSurfaceView);
-
-        mSurfaceHolder = mSurfaceView.getHolder();
-        mSurfaceHolder.addCallback(this);
-        mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        mCamera = camera;
+        mHolder = getHolder();
+        mHolder.addCallback(this);
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
+
+    public void surfaceCreated(SurfaceHolder holder) {
+        try {
+            mCamera.setPreviewDisplay(holder);
+            mCamera.startPreview();
+        }
+        catch (IOException e) {
+            Log.e("surfaceCreated", "Error setting camera preview: " + e.getMessage());
+        }
+    }
+
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        mCamera.stopPreview();
+
+    }
+//    TODO: MIGHT NEED TO IMPLEMENT THIS
+    public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+
+    }
+
 }

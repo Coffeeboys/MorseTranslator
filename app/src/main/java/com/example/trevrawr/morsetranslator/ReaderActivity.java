@@ -10,6 +10,8 @@ import android.util.Size;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class ReaderActivity extends ActionBarActivity {
     public Camera mCamera;
+    public CameraPreview mPreview;
     private List<Camera.Size> mSupportedPreviewSizes;
 
     @Override
@@ -25,11 +28,21 @@ public class ReaderActivity extends ActionBarActivity {
         setContentView(R.layout.activity_reader);
 
         if (checkCameraHardware(this)) {
-            //openCamera();
-            Toast t = new Toast(this);
-            t.setText("Camera exists");
-            t.show();
+            openCamera();
         }
+
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = (FrameLayout)findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
+
+        Button returnButton = (Button)findViewById(R.id.button_return);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCamera.release();
+                finish();
+            }
+        });
     }
 
     private boolean checkCameraHardware(Context context) {
@@ -41,22 +54,23 @@ public class ReaderActivity extends ActionBarActivity {
         }
     }
 
-//    private boolean openCamera(int id) {
-//        boolean qOpened = false;
-//
-//        try {
-//            releaseCameraAndPreview();
-//            mCamera = Camera.open(id);
-//            qOpened = (mCamera != null);
-//        }
-//
-//        catch (Exception e) {
-//            Log.e(getString(R.string.app_name), "Failed to open camera");
-//            e.printStackTrace();
-//        }
-//        return qOpened;
-//    }
-//
+    private boolean openCamera() {
+        boolean qOpened = false;
+
+
+        try {
+            //releaseCameraAndPreview();
+            mCamera = Camera.open();
+            qOpened = (mCamera != null);
+        }
+
+        catch (Exception e) {
+            Log.e(getString(R.string.app_name), "Failed to open camera");
+            e.printStackTrace();
+        }
+        return qOpened;
+    }
+
 //    private void releaseCameraAndPreview() {
 //        //mPreview.setCamera(null);
 //        if (mCamera == null) {
