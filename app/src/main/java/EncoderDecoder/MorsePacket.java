@@ -1,3 +1,4 @@
+package EncoderDecoder;
 
 public class MorsePacket {
 	public final int TIME_UNIT=500;
