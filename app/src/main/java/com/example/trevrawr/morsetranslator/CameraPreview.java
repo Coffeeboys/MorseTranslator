@@ -23,6 +23,9 @@ import java.io.IOException;
 import EncoderDecoder.MorsePacket;
 
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback, Camera.PreviewCallback {
+    private final int ERROR_THRESHOLD = 3;
+    private final int LETTER_SPACE = 3;
+    private final int WORD_SPACE = 6;
     private Camera mCamera;
     private SurfaceHolder mHolder;
     private byte[] pixelData;
@@ -99,11 +102,23 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private void saveDelta(long delta, double deltaTime) {
         int index = (int)(delta / Math.abs(delta));
         boolean deltaBool = (index == 1);
+        int length;
 
-        if (deltaTime < )
+        if (deltaTime <= ERROR_THRESHOLD * MorsePacket.TIME_UNIT) {
+            length = 1;
+        }
 
-        MorsePacket packet = new MorsePacket(deltaBool, );
+        else if (deltaTime > ERROR_THRESHOLD * MorsePacket.TIME_UNIT
+                || deltaTime <= ERROR_THRESHOLD * LETTER_SPACE * MorsePacket.TIME_UNIT) {
+            length = LETTER_SPACE;
+        }
 
-        ReaderActivity.savedTimings.add();
+        else {
+            length = WORD_SPACE;
+        }
+
+        MorsePacket packet = new MorsePacket(deltaBool, length);
+
+        ReaderActivity.savedTimings.add(packet);
     }
 }
