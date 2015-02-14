@@ -5,17 +5,17 @@ import java.util.HashMap;
 
 
 public class ConversionTableMaker {
-	private static final MorsePacket dot = new MorsePacket(true, 1);
-	private static final MorsePacket dash = new MorsePacket(true, 3);
-	private static final MorsePacket spaceSend = new MorsePacket(false, 6);//note: only 6, because adding 1
+	public static final MorsePacket dot = new MorsePacket(true, 1);
+	public static final MorsePacket dash = new MorsePacket(true, 3);
+	public static final MorsePacket spaceSend = new MorsePacket(false, 4);//note: only 4, because adding 1
 																//to each letter. only for sending
-	private static final MorsePacket space = new MorsePacket(false, 7);//note: only for reading
-	private static final MorsePacket spaceBC = new MorsePacket(false, 3);//space between characters
-	private static final MorsePacket spaceBSC = new MorsePacket(false, 1);//space between same characters
+	public static final MorsePacket space = new MorsePacket(false, 7);//note: only for reading
+	public static final MorsePacket spaceBC = new MorsePacket(false, 3);//space between characters
+	public static final MorsePacket spaceBSC = new MorsePacket(false, 1);//space between same characters
 	
 	public static HashMap<ArrayList<MorsePacket>,String> makeMorseTable(){
 		int capacity = 50;
-		HashMap<ArrayList<MorsePacket>, String> conversionTable = new HashMap(capacity);
+		HashMap<ArrayList<MorsePacket>, String> conversionTable = new HashMap<ArrayList<MorsePacket>, String>(capacity);
 		
 		//a
 		ArrayList<MorsePacket> a = new ArrayList();
