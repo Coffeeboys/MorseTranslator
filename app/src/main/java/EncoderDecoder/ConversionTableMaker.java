@@ -51,10 +51,38 @@ public class ConversionTableMaker {
 	public static ArrayList<MorsePacket> nine;
 	public static ArrayList<MorsePacket> zero;
 	
+	public static ArrayList<ArrayList<MorsePacket>> packetList= new ArrayList<ArrayList<MorsePacket>>();
+	
 	
 	public static HashMap<ArrayList<MorsePacket>,String> makeMorseTable(){
 		int capacity = 50;
 		HashMap<ArrayList<MorsePacket>, String> conversionTable = new HashMap<ArrayList<MorsePacket>, String>(capacity);
+		packetList.add(a);
+		packetList.add(b);
+		packetList.add(c);
+		packetList.add(d);
+		packetList.add(e);
+		packetList.add(f);
+		packetList.add(g);
+		packetList.add(h);
+		packetList.add(i);
+		packetList.add(j);
+		packetList.add(k);
+		packetList.add(l);
+		packetList.add(m);
+		packetList.add(n);
+		packetList.add(o);
+		packetList.add(p);
+		packetList.add(q);
+		packetList.add(r);
+		packetList.add(s);
+		packetList.add(t);
+		packetList.add(u);
+		packetList.add(v);
+		packetList.add(w);
+		packetList.add(x);
+		packetList.add(y);
+		packetList.add(z);
 		
 		//a
 		a = new ArrayList();
@@ -195,7 +223,7 @@ public class ConversionTableMaker {
 		conversionTable.put(n, "n");
 		
 		//o
-		ArrayList<MorsePacket> o = new ArrayList();
+		o = new ArrayList();
 		o.add(dash);
 		o.add(spaceBSC);
 		o.add(dash);
@@ -205,7 +233,7 @@ public class ConversionTableMaker {
 		conversionTable.put(o, "o");
 		
 		//p
-		ArrayList<MorsePacket> p = new ArrayList();
+		p = new ArrayList();
 		p.add(dot);
 		p.add(spaceBSC);
 		p.add(dash);
@@ -217,7 +245,7 @@ public class ConversionTableMaker {
 		conversionTable.put(p, "p");
 		
 		//q
-		ArrayList<MorsePacket> q = new ArrayList();
+		q = new ArrayList();
 		q.add(dash);
 		q.add(spaceBSC);
 		q.add(dash);
@@ -229,7 +257,7 @@ public class ConversionTableMaker {
 		conversionTable.put(q, "q");
 		
 		//r
-		ArrayList<MorsePacket> r = new ArrayList();
+		r = new ArrayList();
 		r.add(dot);
 		r.add(spaceBSC);
 		r.add(dash);
@@ -249,13 +277,13 @@ public class ConversionTableMaker {
 		conversionTable.put(s, "s");
 		
 		//t
-		ArrayList<MorsePacket> t = new ArrayList();
+		t = new ArrayList();
 		t.add(dash);
 		//t.add(spaceBC);
 		conversionTable.put(t, "t");
 		
 		//u
-		ArrayList<MorsePacket> u = new ArrayList();
+		u = new ArrayList();
 		u.add(dot);
 		u.add(spaceBSC);
 		u.add(dot);
@@ -265,7 +293,7 @@ public class ConversionTableMaker {
 		conversionTable.put(u, "u");
 		
 		//v
-		ArrayList<MorsePacket> v = new ArrayList();
+		v = new ArrayList();
 		v.add(dot);
 		v.add(spaceBSC);
 		v.add(dot);
@@ -277,7 +305,7 @@ public class ConversionTableMaker {
 		conversionTable.put(v, "v");
 			
 		//w
-		ArrayList<MorsePacket> w = new ArrayList();
+		w = new ArrayList();
 		w.add(dot);
 		w.add(spaceBSC);
 		w.add(dash);
@@ -287,7 +315,7 @@ public class ConversionTableMaker {
 		conversionTable.put(w, "w");
 		
 		//X
-		ArrayList<MorsePacket> x = new ArrayList();
+		x = new ArrayList();
 		x.add(dash);
 		x.add(spaceBSC);
 		x.add(dot);
@@ -299,7 +327,7 @@ public class ConversionTableMaker {
 		conversionTable.put(x, "x");
 		
 		//Y
-		ArrayList<MorsePacket> y = new ArrayList();
+		y = new ArrayList();
 		y.add(dash);
 		y.add(spaceBSC);
 		y.add(dot);
@@ -311,7 +339,7 @@ public class ConversionTableMaker {
 		conversionTable.put(y, "y");
 		
 		//Z
-		ArrayList<MorsePacket> z = new ArrayList();
+		z = new ArrayList();
 		z.add(dash);
 		z.add(spaceBSC);
 		z.add(dash);
@@ -325,7 +353,7 @@ public class ConversionTableMaker {
 		
 		//numbers
 		//0
-		ArrayList<MorsePacket> zero = new ArrayList();
+		zero = new ArrayList();
 		zero.add(dash);
 		zero.add(spaceBSC);
 		zero.add(dash);
@@ -339,7 +367,7 @@ public class ConversionTableMaker {
 		conversionTable.put(zero, "0");
 		 
 		//1
-		ArrayList<MorsePacket> one = new ArrayList();
+		one = new ArrayList();
 		one.add(dot);
 		one.add(spaceBSC);
 		one.add(dash);
@@ -353,7 +381,7 @@ public class ConversionTableMaker {
 		conversionTable.put(one, "1");
 		 
 		//2
-		ArrayList<MorsePacket> two = new ArrayList();
+		two = new ArrayList();
 		two.add(dot);
 		two.add(spaceBSC);
 		two.add(dot);
@@ -368,7 +396,7 @@ public class ConversionTableMaker {
 		conversionTable.put(two, "2");
 		 
 		//3
-		ArrayList<MorsePacket> three = new ArrayList();
+		three = new ArrayList();
 		three.add(dot);
 		three.add(spaceBSC);
 		three.add(dot);
@@ -382,7 +410,7 @@ public class ConversionTableMaker {
 		conversionTable.put(three, "3");
 		 
 		//4
-		ArrayList<MorsePacket> four = new ArrayList();
+		four = new ArrayList();
 		four.add(dot);
 		four.add(spaceBSC);
 		four.add(dot);
@@ -395,7 +423,7 @@ public class ConversionTableMaker {
 		//four.add(spaceBC);
 		conversionTable.put(four, "4");
 		//5
-		ArrayList<MorsePacket> five = new ArrayList();
+		five = new ArrayList();
 		five.add(dot);
 		five.add(spaceBSC);
 		five.add(dot);
@@ -409,7 +437,8 @@ public class ConversionTableMaker {
 		conversionTable.put(five, "5");
 		 
 		//6
-		ArrayList<MorsePacket> six = new ArrayList();
+		
+		six = new ArrayList();
 		six.add(dash);
 		six.add(spaceBSC);
 		six.add(dot);
@@ -423,7 +452,7 @@ public class ConversionTableMaker {
 		conversionTable.put(six, "6");
 		 
 		//7
-		ArrayList<MorsePacket> seven = new ArrayList();
+		seven = new ArrayList();
 		seven.add(dash);
 		seven.add(spaceBSC);
 		seven.add(dash);
@@ -437,7 +466,7 @@ public class ConversionTableMaker {
 		conversionTable.put(seven, "7");
 		 
 		//8
-		ArrayList<MorsePacket> eight = new ArrayList();
+		eight = new ArrayList();
 		eight.add(dash);
 		eight.add(spaceBSC);
 		eight.add(dash);
@@ -451,7 +480,7 @@ public class ConversionTableMaker {
 		conversionTable.put(eight, "8");
 		 
 		//9
-		ArrayList<MorsePacket> nine = new ArrayList();
+		nine = new ArrayList();
 		nine.add(dash);
 		nine.add(spaceBSC);
 		nine.add(dash);
@@ -465,7 +494,7 @@ public class ConversionTableMaker {
 		conversionTable.put(nine, "9");
 		
 		//space
-		ArrayList<MorsePacket> spaceX = new ArrayList();
+		spaceX = new ArrayList();
 		spaceX.add(space);
 		conversionTable.put(spaceX, " ");
 		
@@ -833,6 +862,7 @@ public class ConversionTableMaker {
 		conversionTable.put("5", five);
 		 
 		//6
+		
 		ArrayList<MorsePacket> six = new ArrayList();
 		six.add(dash);
 		six.add(spaceBSC);
