@@ -8,6 +8,7 @@ public class EncoderDecoder {
 	//conversion table from alpha to MorsePacket
 	private final HashMap<ArrayList<MorsePacket>, String> morseTable = ConversionTableMaker.makeMorseTable();
 	//conversion table from MorsePackets to alphabet
+	ConversionTableMaker table = new ConversionTableMaker();
 	
 	//input: string
 	//returns an ArrayList of ArrayList of MorsePackets
@@ -42,15 +43,17 @@ public class EncoderDecoder {
 		return sentence;*/
 		String sentence = "";
         for (int j = 0; j < input.size(); ++j) {
-
             for (ArrayList<MorsePacket> p : ConversionTableMaker.packetList) {
-                if (input.get(j).size() == p.size()) {
-                    for (int i = 0; i < input.get(0).size(); ++i) {
+            	System.out.println(input.get(j).size());
+                if (input.get(j).size() == 4){//p.size()) {
+                	System.out.println("GDKSG:");
+                    for (int i = 0; i < input.get(j).size(); ++i) {
                         if (input.get(j).get(i).getState() != p.get(i).getState() &&
                                 input.get(j).get(i).getDuration() != p.get(i).getDuration()) {
-                            //System.out.println(morseTable.get(ConversionTableMaker.s));
+                            System.out.println(morseTable.get(ConversionTableMaker.s));
                             break;
                         }
+                        System.out.println(morseTable.get(p.get(i)));
                         sentence += morseTable.get(p.get(i));
                     }
 
@@ -58,36 +61,13 @@ public class EncoderDecoder {
                 }
             }
         }
-			//if (input.get(0).get(i).getState() != ConversionTableMaker.s.get(i).getState() ||
-				//	input.get(0).get(i).getDuration() != ConversionTableMaker.s.get(i).getDuration()) {
-//			if (input.get(0).get(i).getState() != true &&
-//				input.get(0).get(i).getDuration() != 1) {
-//				//System.out.println(morseTable.get(ConversionTableMaker.s));
-//				break;
-//			}
-			//System.out.println(morseTable.get(ConversionTableMaker.s));
+
 			
 			//return morseTable.get(ConversionTableMaker.s);
-                return sentence;
-		}
-		
-		/*String sentence = "";
-		for (int k = 0; k<input.size(); k++){
-			for (int i = 0; i<input.get(k).size(); i++){
-				
-				
-				MorsePacket in = input.get(k).get(i);
-				
-				//s
-				if (in.getState()==true && in.getDuration()==1){
-					//dot
-				}
-				if (in.getState()==true && in.getDuration()==0){
-					//
-				}
-			}
-			
-		}*/
+        System.out.println(sentence);
+            return sentence;
+		//return null;
+
 		
 		
 	
@@ -95,8 +75,6 @@ public class EncoderDecoder {
 		
 		
 		
-		
-		return null;
 	}
 	
 	private boolean isAlphaNumeric(String s){
