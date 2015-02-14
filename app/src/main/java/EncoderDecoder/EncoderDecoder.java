@@ -55,11 +55,11 @@ public class EncoderDecoder {
             }
 			//if (input.get(0).get(i).getState() != ConversionTableMaker.s.get(i).getState() ||
 				//	input.get(0).get(i).getDuration() != ConversionTableMaker.s.get(i).getDuration()) {
-			if (input.get(0).get(i).getState() != true &&
-				input.get(0).get(i).getDuration() != 1) {
-				//System.out.println(morseTable.get(ConversionTableMaker.s));
-				break;
-			}
+//			if (input.get(0).get(i).getState() != true &&
+//				input.get(0).get(i).getDuration() != 1) {
+//				//System.out.println(morseTable.get(ConversionTableMaker.s));
+//				break;
+//			}
 			System.out.println(morseTable.get(ConversionTableMaker.s));
 			
 			return morseTable.get(ConversionTableMaker.s);
