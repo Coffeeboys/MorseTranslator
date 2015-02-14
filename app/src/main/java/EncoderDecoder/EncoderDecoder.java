@@ -12,7 +12,7 @@ public class EncoderDecoder {
 	//input: string
 	//returns an ArrayList of ArrayList of MorsePackets
 	public ArrayList<ArrayList<MorsePacket>> encode(String input){
-		ArrayList<ArrayList<MorsePacket>> sentence = new ArrayList();
+		ArrayList<ArrayList<MorsePacket>> sentence = new ArrayList<ArrayList<MorsePacket>>();
 		input = input.toLowerCase();
 		for (int k = 0; k<input.length(); k++){
 			String s = input.substring(k, k+1);
@@ -26,16 +26,60 @@ public class EncoderDecoder {
 	//input: Arraylist of Arraylist of MorsePackets
 	//returns: String
 	public String decode(ArrayList<ArrayList<MorsePacket>> input){
-		String sentence="";
-		for (int k = 0; k<input.size(); k++){
-			String s = morseTable.get(input.get(k));
+	/*	String sentence="";
+		//for (int k = 0; k<input.size(); k++){
+		for (ArrayList<MorsePacket> k: input) {
+			//String s = morseTable.get(input.get(k));
+			String s = morseTable.get(k);
+			System.out.println(s);
+			//System.out.println(input.get(k));
 			if (!s.equals(null)){
-				//System.out.println(s);
+				System.out.println(s);
 				sentence=sentence+s;
 			}
 		}
 		
-		return sentence;
+		return sentence;*/
+		
+		for (int i = 0; i < 6; ++i) {
+			//if (input.get(0).get(i).getState() != ConversionTableMaker.s.get(i).getState() ||
+				//	input.get(0).get(i).getDuration() != ConversionTableMaker.s.get(i).getDuration()) {
+			if (input.get(0).get(i).getState() != true &&
+				input.get(0).get(i).getDuration() != 1) {
+				//System.out.println(morseTable.get(ConversionTableMaker.s));
+				break;
+			}
+			System.out.println(morseTable.get(ConversionTableMaker.s));
+			
+			return morseTable.get(ConversionTableMaker.s);
+		}
+		
+		/*String sentence = "";
+		for (int k = 0; k<input.size(); k++){
+			for (int i = 0; i<input.get(k).size(); i++){
+				
+				
+				MorsePacket in = input.get(k).get(i);
+				
+				//s
+				if (in.getState()==true && in.getDuration()==1){
+					//dot
+				}
+				if (in.getState()==true && in.getDuration()==0){
+					//
+				}
+			}
+			
+		}*/
+		
+		
+	
+		
+		
+		
+		
+		
+		return null;
 	}
 	
 	private boolean isAlphaNumeric(String s){
