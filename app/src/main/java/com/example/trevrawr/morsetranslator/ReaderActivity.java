@@ -13,8 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +30,14 @@ public class ReaderActivity extends Activity {
     public CameraPreview mPreview;
     private List<Camera.Size> mSupportedPreviewSizes;
     public static ArrayList<ArrayList<MorsePacket>> savedTimings = new ArrayList<ArrayList<MorsePacket>>(1);
+    public static TextView decodedText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
 
+        decodedText = (TextView)findViewById(R.id.decoded_string);
 
         if (checkCameraHardware(this)) {
             openCamera();
@@ -45,7 +50,8 @@ public class ReaderActivity extends Activity {
         //parameters.setPreviewFpsRange(parameters.getSupportedPreviewFpsRange().get(0)[1], parameters.getSupportedPreviewFpsRange().get(0)[1]);
 //        parameters.setPreviewFpsRange(30000, 30000);
 //        parameters.setPreviewSize(parameters.getPreviewSize().width / 2, parameters.getPreviewSize().height / 2);
-        parameters.setExposureCompensation(parameters.getMaxExposureCompensation());
+        //parameters.setExposureCompensation(parameters.getMaxExposureCompensation());
+//        parameters.setColorEffect(parameters.EFFECT_SOLARIZE);
         mCamera.setParameters(parameters);
         mCamera.setPreviewCallbackWithBuffer(mPreview);
 

@@ -10,7 +10,7 @@
     <string name="morse_reader_button_title">Morse Reader</string>
     <string name="transmitter_prompt">Enter the text you would like to translate to morse code:</string>
     <string name="transmitter_button_name">Transmit!</string>
-    <string name="decoded_string">lol</string>
+    <string name="decoded_string">hello world</string>
     <string name="output_dialog">Decoded Morse</string>
     <string name="dialog_button">OK</string>
 
