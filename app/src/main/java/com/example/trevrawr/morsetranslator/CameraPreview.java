@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import EncoderDecoder.EncoderDecoder;
 import EncoderDecoder.MorsePacket;
 
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback, Camera.PreviewCallback {
@@ -87,8 +88,15 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         deltaTime += prevFrameTick;
         long delta = sum - lastAvg;
 
+        double deltaTimeInSeconds = deltaTime / 1000;
+
+        if (lastAvg < 0 && deltaTimeInSeconds > 5) {
+
+            outputMessage(decodeArray());
+        }
+
         if (Math.abs(delta) >= (40)) {
-            Log.e("Delta, timeDiff", "" + (sum - lastAvg) + ", " + (deltaTime/1000));
+            Log.e("Delta, timeDiff", "" + (sum - lastAvg) + ", " + deltaTimeInSeconds);
 
             saveDelta(lastAvg, deltaTime);
 
@@ -101,8 +109,18 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         lastAvg = sum;
     }
 
+    private void outputMessage(String s) {
+        OutputFragment dialog = new OutputFragment();
+        dialog.show();
+    }
+
+    private String decodeArray() {
+        EncoderDecoder decoder = new EncoderDecoder();
+        return decoder.decode(ReaderActivity.savedTimings);
+    }
+
     private void saveDelta(long delta, double deltaTime) {
-        int index = (int)(delta / Math.abs(delta));
+        int index = (int)(Math.signum((double)delta));
         boolean deltaBool = (index == 1);
         int length;
 
@@ -119,12 +137,23 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             length = WORD_SPACE;
         }
 
-        if (deltaBool == false && length >= LETTER_SPACE) {
+        if (deltaBool == false && length == LETTER_SPACE) {
             ReaderActivity.savedTimings.add(characterPackets);
             characterPackets = new ArrayList<MorsePacket>();
         }
+        else if (deltaBool == false && length == WORD_SPACE) {
+            ReaderActivity.savedTimings.add(characterPackets);
 
-        MorsePacket packet = new MorsePacket(deltaBool, length);
-        characterPackets.add(packet);
+            characterPackets = new ArrayList<MorsePacket>();
+            characterPackets.add(new MorsePacket(false, WORD_SPACE));
+            ReaderActivity.savedTimings.add(characterPackets);
+
+            characterPackets = new ArrayList<MorsePacket>();
+        }
+
+        else {
+            MorsePacket packet = new MorsePacket(deltaBool, length);
+            characterPackets.add(packet);
+        }
     }
 }

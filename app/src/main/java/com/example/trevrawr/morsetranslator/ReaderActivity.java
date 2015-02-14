@@ -44,18 +44,19 @@ public class ReaderActivity extends Activity {
         Camera.Parameters parameters = mCamera.getParameters();
         //parameters.setPreviewFpsRange(parameters.getSupportedPreviewFpsRange().get(0)[1], parameters.getSupportedPreviewFpsRange().get(0)[1]);
 //        parameters.setPreviewFpsRange(30000, 30000);
+//        parameters.setPreviewSize(parameters.getPreviewSize().width / 2, parameters.getPreviewSize().height / 2);
         parameters.setExposureCompensation(parameters.getMinExposureCompensation());
         mCamera.setParameters(parameters);
         mCamera.setPreviewCallbackWithBuffer(mPreview);
 
-        Button returnButton = (Button)findViewById(R.id.button_return);
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onPause();
-                finish();
-            }
-        });
+//        Button returnButton = (Button)findViewById(R.id.button_return);
+//        returnButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onPause();
+//                finish();
+//            }
+//        });
     }
 
     public void onPause() {
