@@ -19,19 +19,21 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import EncoderDecoder.MorsePacket;
 
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback, Camera.PreviewCallback {
     private final int ERROR_THRESHOLD = 3;
     private final int LETTER_SPACE = 3;
-    private final int WORD_SPACE = 6;
+    private final int WORD_SPACE = 7;
     private Camera mCamera;
     private SurfaceHolder mHolder;
     private byte[] pixelData;
     private long prevFrameTick = System.currentTimeMillis();
     private long lastAvg = 0;
     private double deltaTime = 0;
+    private ArrayList<MorsePacket> characterPackets;
 
 
     public CameraPreview(Context context, Camera camera) {
@@ -117,8 +119,12 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             length = WORD_SPACE;
         }
 
-        MorsePacket packet = new MorsePacket(deltaBool, length);
+        if (deltaBool == false && length >= LETTER_SPACE) {
+            ReaderActivity.savedTimings.add(characterPackets);
+            characterPackets = new ArrayList<MorsePacket>();
+        }
 
-        ReaderActivity.savedTimings.add(packet);
+        MorsePacket packet = new MorsePacket(deltaBool, length);
+        characterPackets.add(packet);
     }
 }
