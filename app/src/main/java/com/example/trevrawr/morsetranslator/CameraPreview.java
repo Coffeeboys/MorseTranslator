@@ -95,10 +95,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         if (deltaTimeInSeconds > 5) {
             //outputMessage(decodeArray());
-            Log.e("Timeout", "Hello World");
+            //Log.e("Timeout", "Hello World");
         }
-        Log.e("DeltaSeconds", "" + deltaTimeInSeconds);
-        if (Math.abs(delta) >= (40)) {
+        //Log.e("DeltaSeconds", "" + deltaTimeInSeconds);
+        if (Math.abs(delta) >= (10)) {
             Log.e("Delta, timeDiff", "" + (sum - lastAvg) + ", " + deltaTimeInSeconds);
 
             saveDelta(lastAvg, deltaTime);
@@ -128,17 +128,25 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     private void saveDelta(long delta, double deltaTime) {
         if (delta == 0) return;
+        //Log.e("SaveDelta", "Line 2");
         int index = (int)(Math.signum((double)delta));
+//        Log.e("SaveDelta", "Line 4");
         boolean deltaBool = (index == 1);
+//        Log.e("SaveDelta", "Line 6");
+
         int length = 0;
 
         if (deltaTime <= ERROR_THRESHOLD * MorsePacket.TIME_UNIT) {
             length = 1;
+//            Log.e("SaveDelta", "If 1");
+
         }
 
         else if (deltaTime > ERROR_THRESHOLD * MorsePacket.TIME_UNIT
                 || deltaTime <= ERROR_THRESHOLD * LETTER_SPACE * MorsePacket.TIME_UNIT) {
             length = LETTER_SPACE;
+//            Log.e("SaveDelta", "If 2");
+
         }
 
         else {
@@ -146,6 +154,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
 
         if (deltaBool == false && length == LETTER_SPACE) {
+//            Log.e("SaveDelta", "If set2 1");
             ReaderActivity.savedTimings.add(characterPackets);
             characterPackets = new ArrayList<MorsePacket>();
         }
@@ -160,8 +169,19 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
 
         else {
+//            Log.e("SaveDelta", "Last else");
             MorsePacket packet = new MorsePacket(deltaBool, length);
-            characterPackets.add(packet);
+//            Log.e("SaveDelta", "After packet");
+//            Log.e("Packet", "" + deltaBool + " " + length);
+            try {
+                characterPackets.add(packet);
+
+            }
+            catch (Exception e) {
+                //Log.e("Exception", e.getMessage());
+            }
+//            Log.e("SaveDelta", "After add");
+
         }
     }
 }

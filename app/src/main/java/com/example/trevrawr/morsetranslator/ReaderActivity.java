@@ -45,7 +45,7 @@ public class ReaderActivity extends Activity {
         //parameters.setPreviewFpsRange(parameters.getSupportedPreviewFpsRange().get(0)[1], parameters.getSupportedPreviewFpsRange().get(0)[1]);
 //        parameters.setPreviewFpsRange(30000, 30000);
 //        parameters.setPreviewSize(parameters.getPreviewSize().width / 2, parameters.getPreviewSize().height / 2);
-        parameters.setExposureCompensation(parameters.getMinExposureCompensation());
+        parameters.setExposureCompensation(parameters.getMaxExposureCompensation());
         mCamera.setParameters(parameters);
         mCamera.setPreviewCallbackWithBuffer(mPreview);
 
