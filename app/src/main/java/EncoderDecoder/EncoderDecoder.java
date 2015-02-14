@@ -41,7 +41,18 @@ public class EncoderDecoder {
 		
 		return sentence;*/
 		
-		for (int i = 0; i < 6; ++i) {
+
+            for (ArrayList<MorsePacket> p: ConversionTableMaker.packetList) {
+                if (input.get(0).size() == p.size() ) {
+                    for (int i = 0; i < input.get(0).size(); ++i) {
+                        if (input.get(0).get(i).getState() != p.get(i).getState() &&
+                                input.get(0).get(i).getDuration() != p.get(i).getDuration()) {
+                            //System.out.println(morseTable.get(ConversionTableMaker.s));
+                            break;
+                        }
+                    }
+
+            }
 			//if (input.get(0).get(i).getState() != ConversionTableMaker.s.get(i).getState() ||
 				//	input.get(0).get(i).getDuration() != ConversionTableMaker.s.get(i).getDuration()) {
 			if (input.get(0).get(i).getState() != true &&
