@@ -40,19 +40,24 @@ public class EncoderDecoder {
 		}
 		
 		return sentence;*/
-		
+		String sentence = "";
+        for (int j = 0; j < input.size(); ++j) {
 
-            for (ArrayList<MorsePacket> p: ConversionTableMaker.packetList) {
-                if (input.get(0).size() == p.size() ) {
+            for (ArrayList<MorsePacket> p : ConversionTableMaker.packetList) {
+                if (input.get(j).size() == p.size()) {
                     for (int i = 0; i < input.get(0).size(); ++i) {
-                        if (input.get(0).get(i).getState() != p.get(i).getState() &&
-                                input.get(0).get(i).getDuration() != p.get(i).getDuration()) {
+                        if (input.get(j).get(i).getState() != p.get(i).getState() &&
+                                input.get(j).get(i).getDuration() != p.get(i).getDuration()) {
                             //System.out.println(morseTable.get(ConversionTableMaker.s));
                             break;
                         }
+                        sentence += morseTable.get(p.get(i));
                     }
 
+
+                }
             }
+        }
 			//if (input.get(0).get(i).getState() != ConversionTableMaker.s.get(i).getState() ||
 				//	input.get(0).get(i).getDuration() != ConversionTableMaker.s.get(i).getDuration()) {
 //			if (input.get(0).get(i).getState() != true &&
@@ -60,9 +65,10 @@ public class EncoderDecoder {
 //				//System.out.println(morseTable.get(ConversionTableMaker.s));
 //				break;
 //			}
-			System.out.println(morseTable.get(ConversionTableMaker.s));
+			//System.out.println(morseTable.get(ConversionTableMaker.s));
 			
-			return morseTable.get(ConversionTableMaker.s);
+			//return morseTable.get(ConversionTableMaker.s);
+                return sentence;
 		}
 		
 		/*String sentence = "";
