@@ -53,6 +53,34 @@ public class ConversionTableMaker {
 	
 	public static ArrayList<ArrayList<MorsePacket>> packetList= new ArrayList<ArrayList<MorsePacket>>();
 	
+	public ConversionTableMaker() {
+		packetList.add(a);
+		packetList.add(b);
+		packetList.add(c);
+		packetList.add(d);
+		packetList.add(e);
+		packetList.add(f);
+		packetList.add(g);
+		packetList.add(h);
+		packetList.add(i);
+		packetList.add(j);
+		packetList.add(k);
+		packetList.add(l);
+		packetList.add(m);
+		packetList.add(n);
+		packetList.add(o);
+		packetList.add(p);
+		packetList.add(q);
+		packetList.add(r);
+		packetList.add(s);
+		packetList.add(t);
+		packetList.add(u);
+		packetList.add(v);
+		packetList.add(w);
+		packetList.add(x);
+		packetList.add(y);
+		packetList.add(z);
+	}
 	
 	public static HashMap<ArrayList<MorsePacket>,String> makeMorseTable(){
 		int capacity = 50;
