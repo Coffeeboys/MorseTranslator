@@ -26,7 +26,7 @@ public class ReaderActivity extends Activity {
     public Camera mCamera;
     public CameraPreview mPreview;
     private List<Camera.Size> mSupportedPreviewSizes;
-    public static ArrayList<MorsePacket> savedTimings = new ArrayList<MorsePacket>();
+    public static ArrayList<ArrayList<MorsePacket>> savedTimings = new ArrayList<ArrayList<MorsePacket>>(1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
