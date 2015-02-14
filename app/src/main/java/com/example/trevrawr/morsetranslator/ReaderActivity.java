@@ -16,13 +16,17 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import EncoderDecoder.MorsePacket;
 
 
 public class ReaderActivity extends Activity {
     public Camera mCamera;
     public CameraPreview mPreview;
     private List<Camera.Size> mSupportedPreviewSizes;
+    public static ArrayList<MorsePacket> savedTimings = new ArrayList<MorsePacket>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class ReaderActivity extends Activity {
         FrameLayout preview = (FrameLayout)findViewById(R.id.camera_preview);
         preview.addView(mPreview);
         Camera.Parameters parameters = mCamera.getParameters();
-        parameters.setPreviewFpsRange(parameters.getSupportedPreviewFpsRange().get(0)[1], parameters.getSupportedPreviewFpsRange().get(0)[1]);
+        //parameters.setPreviewFpsRange(parameters.getSupportedPreviewFpsRange().get(0)[1], parameters.getSupportedPreviewFpsRange().get(0)[1]);
 //        parameters.setPreviewFpsRange(30000, 30000);
         parameters.setExposureCompensation(parameters.getMinExposureCompensation());
         mCamera.setParameters(parameters);

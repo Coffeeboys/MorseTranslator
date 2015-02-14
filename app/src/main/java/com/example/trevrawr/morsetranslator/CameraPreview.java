@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import EncoderDecoder.MorsePacket;
+
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback, Camera.PreviewCallback {
     private Camera mCamera;
     private SurfaceHolder mHolder;
@@ -82,11 +84,26 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         if (Math.abs(delta) >= (40)) {
             Log.e("Delta, timeDiff", "" + (sum - lastAvg) + ", " + (deltaTime/1000));
+
+            saveDelta(lastAvg, deltaTime);
+
             deltaTime = 0;
+
         }
 
 
 
         lastAvg = sum;
+    }
+
+    private void saveDelta(long delta, double deltaTime) {
+        int index = (int)(delta / Math.abs(delta));
+        boolean deltaBool = (index == 1);
+
+        if (deltaTime < )
+
+        MorsePacket packet = new MorsePacket(deltaBool, );
+
+        ReaderActivity.savedTimings.add();
     }
 }
