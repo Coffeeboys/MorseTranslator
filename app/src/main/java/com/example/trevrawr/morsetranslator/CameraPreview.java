@@ -3,6 +3,8 @@ package com.example.trevrawr.morsetranslator;
 /**
 * Created by emreerhan on 2015-02-13.
 */
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -16,6 +18,7 @@ import android.util.Size;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -34,6 +37,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private long prevFrameTick = System.currentTimeMillis();
     private long lastAvg = 0;
     private double deltaTime = 0;
+    private double deltaTimeInSeconds = 0;
     private ArrayList<MorsePacket> characterPackets;
 
 
@@ -76,7 +80,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void onPreviewFrame(byte[] data, Camera camera) {
-        prevFrameTick = System.currentTimeMillis();
         pixelData = new byte[data.length];
         mCamera.addCallbackBuffer(pixelData);
         long sum = 0l;
@@ -85,16 +88,16 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
         sum = sum / data.length;
         //Log.e("Average: ", "" + sum);
-        deltaTime += prevFrameTick;
+        deltaTime += System.currentTimeMillis() - prevFrameTick;
         long delta = sum - lastAvg;
 
-        double deltaTimeInSeconds = deltaTime / 1000;
+        deltaTimeInSeconds = deltaTime / 1000;
 
-        if (lastAvg < 0 && deltaTimeInSeconds > 5) {
-
-            outputMessage(decodeArray());
+        if (deltaTimeInSeconds > 5) {
+            //outputMessage(decodeArray());
+            Log.e("Timeout", "Hello World");
         }
-
+        Log.e("DeltaSeconds", "" + deltaTimeInSeconds);
         if (Math.abs(delta) >= (40)) {
             Log.e("Delta, timeDiff", "" + (sum - lastAvg) + ", " + deltaTimeInSeconds);
 
@@ -105,13 +108,17 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
 
 
-
+        //outputMessage(decodeArray());
         lastAvg = sum;
+        prevFrameTick = System.currentTimeMillis();
+
     }
 
     private void outputMessage(String s) {
-        OutputFragment dialog = new OutputFragment();
-        dialog.show();
+       // OutputFragment dialog = new OutputFragment();
+        Log.e("String: ", s);
+
+
     }
 
     private String decodeArray() {
@@ -120,9 +127,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     }
 
     private void saveDelta(long delta, double deltaTime) {
+        if (delta == 0) return;
         int index = (int)(Math.signum((double)delta));
         boolean deltaBool = (index == 1);
-        int length;
+        int length = 0;
 
         if (deltaTime <= ERROR_THRESHOLD * MorsePacket.TIME_UNIT) {
             length = 1;
