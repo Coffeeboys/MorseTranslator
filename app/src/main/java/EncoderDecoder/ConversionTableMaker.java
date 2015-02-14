@@ -7,8 +7,9 @@ import java.util.HashMap;
 public class ConversionTableMaker {
 	private static final MorsePacket dot = new MorsePacket(true, 1);
 	private static final MorsePacket dash = new MorsePacket(true, 3);
-	private static final MorsePacket space = new MorsePacket(false, 6);//note: only 6, because adding 1
-																//to each letter
+	private static final MorsePacket spaceSend = new MorsePacket(false, 6);//note: only 6, because adding 1
+																//to each letter. only for sending
+	private static final MorsePacket space = new MorsePacket(false, 7);//note: only for reading
 	private static final MorsePacket spaceBC = new MorsePacket(false, 3);//space between characters
 	private static final MorsePacket spaceBSC = new MorsePacket(false, 1);//space between same characters
 	
@@ -21,7 +22,7 @@ public class ConversionTableMaker {
 		a.add(dot);
 		a.add(spaceBSC);
 		a.add(dash);
-		a.add(spaceBC);//space between characters
+		//a.add(spaceBC);//space between characters
 		conversionTable.put(a, "a");
 		
 		//b
@@ -31,7 +32,7 @@ public class ConversionTableMaker {
 		b.add(dot);
 		b.add(spaceBSC);
 		b.add(dot);
-		b.add(spaceBC);
+		//b.add(spaceBC);
 		conversionTable.put(b, "b");
 		
 		//c
@@ -43,7 +44,7 @@ public class ConversionTableMaker {
 		c.add(dash);
 		c.add(spaceBSC);
 		c.add(dot);
-		c.add(spaceBC);
+		//c.add(spaceBC);
 		conversionTable.put(c, "c");
 		
 		//d
@@ -53,13 +54,13 @@ public class ConversionTableMaker {
 		d.add(dot);
 		d.add(spaceBSC);
 		d.add(dot);
-		d.add(spaceBC);
+		//d.add(spaceBC);
 		conversionTable.put(d, "d");
 		
 		//e
 		ArrayList<MorsePacket> e = new ArrayList();
 		e.add(dot);
-		e.add(spaceBC);
+		//e.add(spaceBC);
 		conversionTable.put(e, "e");
 		
 		//f
@@ -71,7 +72,7 @@ public class ConversionTableMaker {
 		f.add(dash);
 		f.add(spaceBSC);
 		f.add(dot);
-		f.add(spaceBC);
+		//f.add(spaceBC);
 		conversionTable.put(f, "f");
 		
 		//g
@@ -81,7 +82,7 @@ public class ConversionTableMaker {
 		g.add(dash);
 		g.add(spaceBSC);
 		g.add(dot);
-		g.add(spaceBC);
+		//g.add(spaceBC);
 		conversionTable.put(g, "g");
 		
 		//h
@@ -93,7 +94,7 @@ public class ConversionTableMaker {
 		h.add(dot);
 		h.add(spaceBSC);
 		h.add(dot);
-		h.add(spaceBC);
+		//h.add(spaceBC);
 		conversionTable.put(h, "h");
 		
 		//i
@@ -101,7 +102,7 @@ public class ConversionTableMaker {
 		i.add(dot);
 		i.add(spaceBSC);
 		i.add(dot);
-		i.add(spaceBC);
+		//i.add(spaceBC);
 		conversionTable.put(i, "i");
 		
 		//j
@@ -113,7 +114,7 @@ public class ConversionTableMaker {
 		j.add(dash);
 		j.add(spaceBSC);
 		j.add(dash);
-		j.add(spaceBC);
+		//j.add(spaceBC);
 		conversionTable.put(j, "j");
 		
 		//k
@@ -123,7 +124,7 @@ public class ConversionTableMaker {
 		k.add(dot);
 		k.add(spaceBSC);
 		k.add(dash);
-		k.add(spaceBC);
+		//k.add(spaceBC);
 		conversionTable.put(k, "k");
 		
 		//l
@@ -135,7 +136,7 @@ public class ConversionTableMaker {
 		l.add(dot);
 		l.add(spaceBSC);
 		l.add(dot);
-		l.add(spaceBC);
+		//l.add(spaceBC);
 		conversionTable.put(l, "l");
 		
 		//m
@@ -143,7 +144,7 @@ public class ConversionTableMaker {
 		m.add(dash);
 		m.add(spaceBSC);
 		m.add(dash);
-		m.add(spaceBC);
+		//m.add(spaceBC);
 		conversionTable.put(m, "m");
 		
 		//n
@@ -151,7 +152,7 @@ public class ConversionTableMaker {
 		n.add(dash);
 		n.add(spaceBSC);
 		n.add(dot);
-		n.add(spaceBC);
+		//n.add(spaceBC);
 		conversionTable.put(n, "n");
 		
 		//o
@@ -161,7 +162,7 @@ public class ConversionTableMaker {
 		o.add(dash);
 		o.add(spaceBSC);
 		o.add(dash);
-		o.add(spaceBC);
+		//o.add(spaceBC);
 		conversionTable.put(o, "o");
 		
 		//p
@@ -173,7 +174,7 @@ public class ConversionTableMaker {
 		p.add(dot);
 		p.add(spaceBSC);
 		p.add(dash);
-		p.add(spaceBC);
+		//p.add(spaceBC);
 		conversionTable.put(p, "p");
 		
 		//q
@@ -185,7 +186,7 @@ public class ConversionTableMaker {
 		q.add(dot);
 		q.add(spaceBSC);
 		q.add(dash);
-		q.add(spaceBC);
+		//q.add(spaceBC);
 		conversionTable.put(q, "q");
 		
 		//r
@@ -195,7 +196,7 @@ public class ConversionTableMaker {
 		r.add(dash);
 		r.add(spaceBSC);
 		r.add(dot);
-		r.add(spaceBC);
+		//r.add(spaceBC);
 		conversionTable.put(r, "r");
 		
 		//s
@@ -205,13 +206,13 @@ public class ConversionTableMaker {
 		s.add(dot);
 		s.add(spaceBSC);
 		s.add(dot);
-		s.add(spaceBC);//space between characters
+		//s.add(spaceBC);//space between characters
 		conversionTable.put(s, "s");
 		
 		//t
 		ArrayList<MorsePacket> t = new ArrayList();
 		t.add(dash);
-		t.add(spaceBC);
+		//t.add(spaceBC);
 		conversionTable.put(t, "t");
 		
 		//u
@@ -221,7 +222,7 @@ public class ConversionTableMaker {
 		u.add(dot);
 		u.add(spaceBSC);
 		u.add(dash);
-		u.add(spaceBC);
+		//u.add(spaceBC);
 		conversionTable.put(u, "u");
 		
 		//v
@@ -233,7 +234,7 @@ public class ConversionTableMaker {
 		v.add(dot);
 		v.add(spaceBSC);
 		v.add(dash);
-		v.add(spaceBC);
+		//v.add(spaceBC);
 		conversionTable.put(v, "v");
 			
 		//w
@@ -243,7 +244,7 @@ public class ConversionTableMaker {
 		w.add(dash);
 		w.add(spaceBSC);
 		w.add(dash);
-		w.add(spaceBC);
+		//w.add(spaceBC);
 		conversionTable.put(w, "w");
 		
 		//X
@@ -255,7 +256,7 @@ public class ConversionTableMaker {
 		x.add(dot);
 		x.add(spaceBSC);
 		x.add(dash);
-		x.add(spaceBC);
+		//x.add(spaceBC);
 		conversionTable.put(x, "x");
 		
 		//Y
@@ -267,7 +268,7 @@ public class ConversionTableMaker {
 		y.add(dash);
 		y.add(spaceBSC);
 		y.add(dash);
-		y.add(spaceBC);
+		//y.add(spaceBC);
 		conversionTable.put(y, "y");
 		
 		//Z
@@ -279,7 +280,7 @@ public class ConversionTableMaker {
 		z.add(dot);
 		z.add(spaceBSC);
 		z.add(dot);
-		z.add(spaceBC);
+		//z.add(spaceBC);
 		conversionTable.put(z, "z");
 		 
 		
@@ -295,7 +296,7 @@ public class ConversionTableMaker {
 		zero.add(dash);
 		zero.add(spaceBSC);
 		zero.add(dash);
-		zero.add(spaceBC);
+		//zero.add(spaceBC);
 		conversionTable.put(zero, "0");
 		 
 		//1
@@ -309,7 +310,7 @@ public class ConversionTableMaker {
 		one.add(dash);
 		one.add(spaceBSC);
 		one.add(dash);
-		one.add(spaceBC);
+		//one.add(spaceBC);
 		conversionTable.put(one, "1");
 		 
 		//2
@@ -324,7 +325,7 @@ public class ConversionTableMaker {
 		two.add(spaceBSC);
 		two.add(dash);
 		two.add(spaceBSC);
-		two.add(spaceBC);
+		//two.add(spaceBC);
 		conversionTable.put(two, "2");
 		 
 		//3
@@ -338,7 +339,7 @@ public class ConversionTableMaker {
 		three.add(dash);
 		three.add(spaceBSC);
 		three.add(dash);
-		three.add(spaceBC);
+		//three.add(spaceBC);
 		conversionTable.put(three, "3");
 		 
 		//4
@@ -352,7 +353,7 @@ public class ConversionTableMaker {
 		four.add(dot);
 		four.add(spaceBSC);
 		four.add(dash);
-		four.add(spaceBC);
+		//four.add(spaceBC);
 		conversionTable.put(four, "4");
 		//5
 		ArrayList<MorsePacket> five = new ArrayList();
@@ -365,7 +366,7 @@ public class ConversionTableMaker {
 		five.add(dot);
 		five.add(spaceBSC);
 		five.add(dot);
-		five.add(spaceBC);
+		//five.add(spaceBC);
 		conversionTable.put(five, "5");
 		 
 		//6
@@ -379,7 +380,7 @@ public class ConversionTableMaker {
 		six.add(dot);
 		six.add(spaceBSC);
 		six.add(dot);
-		six.add(spaceBC);
+		//six.add(spaceBC);
 		conversionTable.put(six, "6");
 		 
 		//7
@@ -393,7 +394,7 @@ public class ConversionTableMaker {
 		seven.add(dot);
 		seven.add(spaceBSC);
 		seven.add(dot);
-		seven.add(spaceBC);
+		//seven.add(spaceBC);
 		conversionTable.put(seven, "7");
 		 
 		//8
@@ -407,7 +408,7 @@ public class ConversionTableMaker {
 		eight.add(dot);
 		eight.add(spaceBSC);
 		eight.add(dot);
-		eight.add(spaceBC);
+		//eight.add(spaceBC);
 		conversionTable.put(eight, "8");
 		 
 		//9
@@ -421,7 +422,7 @@ public class ConversionTableMaker {
 		nine.add(dash);
 		nine.add(spaceBSC);
 		nine.add(dot);
-		nine.add(spaceBC);
+		//nine.add(spaceBC);
 		conversionTable.put(nine, "9");
 		
 		//space
@@ -850,7 +851,7 @@ public class ConversionTableMaker {
 		
 		//space
 		ArrayList<MorsePacket> spaceX = new ArrayList();
-		spaceX.add(space);
+		spaceX.add(spaceSend);
 		conversionTable.put(" ", spaceX);
 		
 		return conversionTable;

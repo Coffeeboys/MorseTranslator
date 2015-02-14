@@ -29,8 +29,10 @@ public class EncoderDecoder {
 		String sentence="";
 		for (int k = 0; k<input.size(); k++){
 			String s = morseTable.get(input.get(k));
-			System.out.println(s);
-			sentence=sentence+s;
+			if (!s.equals(null)){
+				//System.out.println(s);
+				sentence=sentence+s;
+			}
 		}
 		
 		return sentence;
