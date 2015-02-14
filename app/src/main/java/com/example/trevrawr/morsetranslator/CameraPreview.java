@@ -96,10 +96,10 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         if (deltaTimeInSeconds > 5) {
             //outputMessage(decodeArray());
             //Log.e("Timeout", "Hello World");
-            ReaderActivity.decodedText.setText("SPOOOOOKY");
+            ReaderActivity.decodedText.setText(R.string.spooky);
         }
         //Log.e("DeltaSeconds", "" + deltaTimeInSeconds);
-        if (Math.abs(delta) >= (10)) {
+        if (Math.abs(delta) >= (20)) {
             Log.e("Delta, timeDiff", "" + (sum - lastAvg) + ", " + deltaTimeInSeconds);
             ReaderActivity.decodedText.setText("" + delta);
 
